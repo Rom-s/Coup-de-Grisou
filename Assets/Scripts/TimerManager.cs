@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
+
+    private int seuilScore = 2;
+
     #region Singleton
     private static TimerManager instance;
     public static TimerManager Instance
@@ -47,10 +50,23 @@ public class TimerManager : MonoBehaviour
 
         if (timeLeft < 0)
         {
-            SceneManager.LoadScene("GameOverScene");
+            CheckWinOrLoose();
         }
     }
 
+
+    void CheckWinOrLoose()
+    {
+        /////////////  TODO il faudra vérifier la zone dans lequel est le joueur, il doit être en haut
+        if (ScoreManager.Instance.score > seuilScore)
+        {
+            SceneManager.LoadScene("WinScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
+    }
      
 
 }
