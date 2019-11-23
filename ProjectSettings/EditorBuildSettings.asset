@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Mixmod.unity
+    guid: 17016b125d40cf44ea0978c9cb4eba99
   m_configObjects: {}
