@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem particles;
 
+    //Sounds:
+    [SerializeField] private FootStepAudioController footStepAudioController;
+    [SerializeField] private PiocheAudioController piocheAudioController;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            footStepAudioController.PlayOne();
             oxygenBar += oxygenGain * Time.deltaTime;
             if(oxygenBar >= oxygenBarMax)
             {
@@ -87,6 +93,7 @@ public class PlayerController : MonoBehaviour
                 if (Hit.collider.tag == "Coal")
                 {
                     particles.Play();
+                    piocheAudioController.PlayOne();
 
                     GazLevel gazLevel = GetCurrentGazLevel();
                     gazLevel.IncreaseGazLevel();
