@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1679114378248868460}
   - component: {fileID: 6815181952997372239}
   - component: {fileID: 4680303300826933326}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 5404258738255439074}
   - component: {fileID: 5404258738255439075}
   - component: {fileID: 5404258738255439068}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4949,7 +4949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2026853474946444909}
   - component: {fileID: 6494721880182576481}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

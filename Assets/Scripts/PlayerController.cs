@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController _controller;
 
+    public Look spriteLooker;
+
     [SerializeField]
     private float Speed = 1;
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
         Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
+
         _controller.Move(move * Time.deltaTime * Speed);
         /* ce sera pour orienter le personnage.*/
         if (move != Vector3.zero)
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (_controller.isGrounded && _velocity.y < 0)
             _velocity.y = 0f;
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -64,6 +69,11 @@ public class PlayerController : MonoBehaviour
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             }
         }
+        if(spriteLooker != null)
+        {
+            spriteLooker.LookCamera();
+        }
+
     }
 
     public void RotateRight()
@@ -73,7 +83,7 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorX == 1)
             {
-                
+                Debug.Log("1");
                 CoeffHorX = 0;
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
@@ -81,7 +91,7 @@ public class PlayerController : MonoBehaviour
 }
             else
             {
-                
+                Debug.Log("2");
                 CoeffHorX = 0;
                 CoeffHorZ = -1;
                 CoeffVerX = 1;
@@ -93,7 +103,7 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorZ == 1)
             {
-                
+                Debug.Log("3");
                 CoeffHorX = -1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -101,7 +111,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                
+                Debug.Log("4");
                 CoeffHorX = 1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -117,7 +127,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Plop");
             if (CoeffHorX == 1)
             {
-                Debug.Log("1");
+
                 CoeffHorX = 0;
                 CoeffHorZ = -1;
                 CoeffVerX = 1;
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("2");
+
                 CoeffHorX = 0;
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
@@ -137,7 +147,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Plip");
             if (CoeffHorZ == 1)
             {
-                Debug.Log("3");
+
                 CoeffHorX = 1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -145,7 +155,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("4");
+
                 CoeffHorX = -1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
