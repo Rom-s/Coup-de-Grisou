@@ -25,35 +25,63 @@ public class TimerManager : MonoBehaviour
     }
 
     #endregion
-    public float timeLeft;
+    
+    private float _timeLeft = 240;
 
-    private float minutes;
-    private float seconds;
+    private float _minutes;
+    private float _seconds;
 
     Text text;
-
+  
     void Awake()
     {
         text = GetComponent<Text>();
-        timeLeft = 360;
+
     }
 
 
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        minutes = Mathf.Floor(timeLeft / 60);   
-        seconds = timeLeft % 60;
-        if (seconds > 59) seconds = 59;
+        _timeLeft -= Time.deltaTime;
+        _minutes = Mathf.Floor(_timeLeft / 60);   
+        _seconds = _timeLeft % 60;
+        if (_seconds > 59) _seconds = 59;
 
-        text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
 
-        if (timeLeft < 0)
+        if (_timeLeft > 30)
+        {
+            text.text = "Time left : " + _minutes + '"' + Mathf.Round(_seconds);
+        }
+        
+
+        if (_timeLeft < 60)
+        {
+            text.color = Color.red;
+        }
+
+        if (_timeLeft < 30)
+        {
+            StartCoroutine(BlinkText());
+        }
+
+        if (_timeLeft < 0)
         {
             CheckWinOrLoose();
         }
     }
 
+    //function to blink the text
+    public IEnumerator BlinkText()
+    {
+        //blink it forever. You can set a terminating condition depending upon your requirement
+        while (true)
+        {
+            text.text = "";
+            yield return new WaitForSeconds(.5f);
+            text.text = "Time left : " + _minutes + '"' + Mathf.Round(_seconds);
+            yield return new WaitForSeconds(.5f);
+        }
+    }
 
     void CheckWinOrLoose()
     {
@@ -67,6 +95,7 @@ public class TimerManager : MonoBehaviour
             SceneManager.LoadScene("GameOverScene");
         }
     }
-     
+
+
 
 }
