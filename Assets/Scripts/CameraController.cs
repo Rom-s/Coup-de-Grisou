@@ -43,11 +43,11 @@ public class CameraController : MonoBehaviour
 
     private void RotateLeft()
     {
-        transform.RotateAround(Vector3.zero,Vector3.up, -90f);
+        transform.RotateAround(Vector3.zero,Vector3.up, 90f);
     }
 
     private void RotateRight()
     {
-        transform.RotateAround(Vector3.zero, Vector3.up, 90f);
+        transform.RotateAround(Vector3.zero, Vector3.up, -90f);
     }
 }
