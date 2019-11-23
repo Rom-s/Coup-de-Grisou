@@ -43,8 +43,11 @@ public class PlayerController : MonoBehaviour
     //Sounds:
     [SerializeField] private FootStepAudioController footStepAudioController;
     [SerializeField] private PiocheAudioController piocheAudioController;
-    
-    
+
+
+    public Animator playerAnimator;
+
+
     // Start is called before the first frame update
     void Start()
     {
