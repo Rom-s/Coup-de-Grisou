@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float Gravity = Physics.gravity.y;
 
     private RaycastHit Hit;
+    [SerializeField] private float _miningDistance = 1.5f;
 
     private float oxygenBar = 100;
     [SerializeField] private float oxygenBarMax = 100;
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
         {
-            if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z), transform.forward, out Hit, 1))
+            if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z), transform.forward, out Hit, _miningDistance))
             {
                 if (Hit.collider.tag == "Coal")
                 {
