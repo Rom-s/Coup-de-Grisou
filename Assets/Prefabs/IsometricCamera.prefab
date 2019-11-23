@@ -191,3 +191,4 @@ MonoBehaviour:
   player: {fileID: 0}
   mapScale: 20
   yOffset: 10
+  rotationTime: 0.5
