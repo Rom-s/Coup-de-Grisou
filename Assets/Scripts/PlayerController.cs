@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit Hit;
 
+    private float oxygenBar = 100;
+    [SerializeField] private float oxygenBarMax = 100;
+    [SerializeField] private float oxygenLoss = 5;
+    [SerializeField] private float oxygenGain = 5;
+
     private float CoeffHorX = 1;
     private float CoeffHorZ = 0;
     private float CoeffVerX = 0;
@@ -28,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        oxygenBar = oxygenBarMax;
         _gazLevels = FindObjectsOfType<GazLevel>();
         Debug.Log(_gazLevels.Length);
     }
@@ -40,6 +46,23 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
 
         _controller.Move(move * Time.deltaTime * Speed);
+
+        if(move == Vector3.zero)
+        {
+            oxygenBar -= oxygenLoss * Time.deltaTime;
+            if(oxygenBar <= 0)
+            {
+                Debug.Log("C'est perdu");
+            }
+        }
+        else
+        {
+            oxygenBar += oxygenGain * Time.deltaTime;
+            if(oxygenBar >= oxygenBarMax)
+            {
+                oxygenBar = oxygenBarMax;
+            }
+        }
         /* ce sera pour orienter le personnage.*/
         if (move != Vector3.zero)
             transform.forward = move;
@@ -54,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out Hit, 1))
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * Hit.distance, Color.yellow);
                 if (Hit.collider.tag == "Coal")
                 {
                     GazLevel gazLevel = GetCurrentGazLevel();
@@ -74,14 +96,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 Debug.Log("no hit");
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             }
         }
         if(spriteLooker != null)
         {
             spriteLooker.LookCamera();
         }
-
+        //Debug.Log("Oxygen = " + oxygenBar);
     }
 
     public void RotateRight()
@@ -91,7 +112,6 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorX == 1)
             {
-                Debug.Log("1");
                 CoeffHorX = 0;
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
@@ -99,7 +119,6 @@ public class PlayerController : MonoBehaviour
 }
             else
             {
-                Debug.Log("2");
                 CoeffHorX = 0;
                 CoeffHorZ = -1;
                 CoeffVerX = 1;
@@ -111,7 +130,6 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorZ == 1)
             {
-                Debug.Log("3");
                 CoeffHorX = -1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -119,7 +137,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("4");
                 CoeffHorX = 1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -132,7 +149,6 @@ public class PlayerController : MonoBehaviour
     {
         if (CoeffHorZ == 0)
         {
-            Debug.Log("Plop");
             if (CoeffHorX == 1)
             {
 
@@ -152,7 +168,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Plip");
             if (CoeffHorZ == 1)
             {
 
