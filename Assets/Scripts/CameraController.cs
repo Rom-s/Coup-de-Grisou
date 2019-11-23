@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
+    private PlayerController playerController;
+
     [SerializeField] private float mapScale;
 
     [SerializeField] private float yOffset;
@@ -17,6 +19,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(mapScale, player.transform.position.y + yOffset , -mapScale);
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -46,10 +49,12 @@ public class CameraController : MonoBehaviour
     private void RotateLeft()
     {
         transform.RotateAround(Vector3.zero,Vector3.up, 90f);
+        playerController.RotateLeft();
     }
 
     private void RotateRight()
     {
+        playerController.RotateRight();
         transform.RotateAround(Vector3.zero, Vector3.up, -90f);
     }
 }
