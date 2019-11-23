@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorX == 1)
             {
-                
+                Debug.Log("1");
                 CoeffHorX = 0;
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 }
             else
             {
-                
+                Debug.Log("2");
                 CoeffHorX = 0;
                 CoeffHorZ = -1;
                 CoeffVerX = 1;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
             
             if (CoeffHorZ == 1)
             {
-                
+                Debug.Log("3");
                 CoeffHorX = -1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                
+                Debug.Log("4");
                 CoeffHorX = 1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Plop");
             if (CoeffHorX == 1)
             {
-                Debug.Log("1");
+
                 CoeffHorX = 0;
                 CoeffHorZ = -1;
                 CoeffVerX = 1;
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("2");
+
                 CoeffHorX = 0;
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Plip");
             if (CoeffHorZ == 1)
             {
-                Debug.Log("3");
+
                 CoeffHorX = 1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Debug.Log("4");
+
                 CoeffHorX = -1;
                 CoeffHorZ = 0;
                 CoeffVerX = 0;
