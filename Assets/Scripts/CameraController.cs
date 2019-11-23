@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject player;
 
     [SerializeField] private float mapScale;
+
+    [SerializeField] private float yOffset;
     
     private bool locked;
 
@@ -14,13 +16,13 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(mapScale, player.transform.position.y , -mapScale);
+        transform.position = new Vector3(mapScale, player.transform.position.y + yOffset , -mapScale);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, player.transform.position.y , transform.position.z);
+        transform.position = new Vector3(transform.position.x, player.transform.position.y + yOffset , transform.position.z);
         
         if (Input.GetAxis("CameraHorizontal")==0 && locked)
         {
