@@ -21,6 +21,8 @@ public class ScoreManager : MonoBehaviour
     }
 
     #endregion
+
+
     public int score;
 
     Text text;
@@ -34,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        text.text = "Score: " + score;
+        text.text = "Score : " + score;
     }
 
 }
