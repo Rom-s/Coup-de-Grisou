@@ -1430,6 +1430,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 1230435220}
+    - target: {fileID: 7799117355542766505, guid: 5d576143fcdc2d54984981749e69e132,
+        type: 3}
+      propertyPath: orthographic size
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d576143fcdc2d54984981749e69e132, type: 3}
 --- !u!1 &1717211419
