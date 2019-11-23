@@ -214,3 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa0a6a4a489c3449b31ccae062c188b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  popAudioSource: {fileID: 1225786656471044322, guid: 5eda847e75fe1a84e9f88c5fb2cf1189,
+    type: 3}

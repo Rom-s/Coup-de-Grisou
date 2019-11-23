@@ -28,6 +28,8 @@ public class TimerManager : MonoBehaviour
     
     private float _timeLeft = 240;
 
+
+
     private float _minutes;
     private float _seconds;
 
@@ -83,14 +85,14 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    void CheckWinOrLoose()
+    public void CheckWinOrLoose()
     {
         /////////////  TODO il faudra vérifier la zone dans lequel est le joueur, il doit être en haut
         if (ScoreManager.Instance.score > seuilScore)
         {
             SceneManager.LoadScene("WinScene");
         }
-        else
+        else if(_timeLeft < 0)
         {
             SceneManager.LoadScene("GameOverScene");
         }
