@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour
 {
+    public SpriteRenderer minerSprite;
+
+    private Vector3 lastPosition;
+
+    public Text oxygenTextBar;
 
     private CharacterController _controller;
 
@@ -22,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private float oxygenBar = 100;
     [SerializeField] private float oxygenBarMax = 100;
-    [SerializeField] private float oxygenLoss = 5;
+    [SerializeField] private float oxygenLoss = 30;
     [SerializeField] private float oxygenGain = 5;
 
     private float CoeffHorX = 1;
@@ -51,6 +57,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lastPosition = transform.position;
         particles.Stop();
         //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
@@ -58,24 +65,16 @@ public class PlayerController : MonoBehaviour
 
         _controller.Move(move * Time.deltaTime * Speed);
 
-        if(move == Vector3.zero)
+        if(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") > 0)
         {
-            oxygenBar -= oxygenLoss * Time.deltaTime;
-            if(oxygenBar <= 0)
-            {
-                Debug.Log("C'est perdu");
-                SceneManager.LoadScene("GameOverScene");
-            }
+            minerSprite.flipX = false;
         }
-        else
+        else if(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") < 0)
         {
-            footStepAudioController.PlayOne();
-            oxygenBar += oxygenGain * Time.deltaTime;
-            if(oxygenBar >= oxygenBarMax)
-            {
-                oxygenBar = oxygenBarMax;
-            }
+            minerSprite.flipX = true;
+
         }
+
         /* ce sera pour orienter le personnage.*/
         if (move != Vector3.zero)
             transform.forward = move;
@@ -86,7 +85,27 @@ public class PlayerController : MonoBehaviour
         if (_controller.isGrounded && _velocity.y < 0)
             _velocity.y = 0f;
 
-        if (Input.GetButtonDown("Mine"))
+        if (/*move == Vector3.zero*/ transform.position == lastPosition)
+        {
+            oxygenBar -= oxygenLoss * Time.deltaTime;
+            if (oxygenBar <= 0)
+            {
+                Debug.Log("C'est perdu");
+                SceneManager.LoadScene("GameOverScene");
+            }
+        }
+        else
+        {
+            footStepAudioController.PlayOne();
+            oxygenBar += oxygenGain * Time.deltaTime;
+            if (oxygenBar >= oxygenBarMax)
+            {
+                oxygenBar = oxygenBarMax;
+            }
+        }
+        oxygenTextBar.text = "Oxygen : " + (int) oxygenBar;
+
+        if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
         {
             if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z), transform.forward, out Hit, 1))
             {
