@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartMenuScene.unity
+    guid: c97c2f3f304fe9e42859389a4644b813
+  - enabled: 0
     path: Assets/Scenes/Mixmod.unity
     guid: 17016b125d40cf44ea0978c9cb4eba99
   - enabled: 1
@@ -14,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lousticos.unity
     guid: c20ffd775e165934b8e8bf2499afafca
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: b16b97c35afd57042af59e1a802bff1f
   m_configObjects: {}
