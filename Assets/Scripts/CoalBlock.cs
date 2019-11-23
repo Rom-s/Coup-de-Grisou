@@ -17,6 +17,7 @@ public class CoalBlock : MonoBehaviour
         if(BlockLife == 0)
         {
             Debug.Log("Block Destroyed");
+            ++ScoreManager.Instance.score;
             GameObject.Destroy(gameObject);
         }
     }

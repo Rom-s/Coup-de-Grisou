@@ -1,18 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Singleton
+    private static ScoreManager instance;
+    public static ScoreManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ScoreManager>();
+            }
+
+            return instance;
+        }
     }
 
-    // Update is called once per frame
+    #endregion
+    public int score;
+
+    Text text;
+
+    void Awake()
+    {
+        text = GetComponent<Text>();
+        score = 0;
+    }
+
+
     void Update()
     {
-        
+        text.text = "Score: " + score;
     }
+
 }
