@@ -31,11 +31,11 @@ public class TimerManager : MonoBehaviour
     private float seconds;
 
     Text text;
-
+  
     void Awake()
     {
         text = GetComponent<Text>();
-        timeLeft = 360;
+        timeLeft = 90;
     }
 
 
@@ -46,7 +46,22 @@ public class TimerManager : MonoBehaviour
         seconds = timeLeft % 60;
         if (seconds > 59) seconds = 59;
 
-        text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
+
+        if (timeLeft > 30)
+        {
+            text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
+        }
+        
+
+        if (timeLeft < 60)
+        {
+            text.color = Color.red;
+        }
+
+        if (timeLeft < 30)
+        {
+            StartCoroutine(BlinkText());
+        }
 
         if (timeLeft < 0)
         {
@@ -54,6 +69,18 @@ public class TimerManager : MonoBehaviour
         }
     }
 
+    //function to blink the text
+    public IEnumerator BlinkText()
+    {
+        //blink it forever. You can set a terminating condition depending upon your requirement
+        while (true)
+        {
+            text.text = "";
+            yield return new WaitForSeconds(.5f);
+            text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
+            yield return new WaitForSeconds(.5f);
+        }
+    }
 
     void CheckWinOrLoose()
     {
@@ -67,6 +94,12 @@ public class TimerManager : MonoBehaviour
             SceneManager.LoadScene("GameOverScene");
         }
     }
-     
+
+    void clignotementText()
+    {
+        //iTween.ColorTo(text.gameObject, iTween.Hash("a", 0, "time", 1.5f, "looptype", iTween.LoopType.pingPong));
+
+    }
+
 
 }
