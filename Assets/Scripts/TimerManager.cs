@@ -25,44 +25,46 @@ public class TimerManager : MonoBehaviour
     }
 
     #endregion
-    public float timeLeft = 240;
+    
+    private float _timeLeft = 240;
 
-    private float minutes;
-    private float seconds;
+    private float _minutes;
+    private float _seconds;
 
     Text text;
   
     void Awake()
     {
         text = GetComponent<Text>();
+
     }
 
 
     void Update()
     {
-        timeLeft -= Time.deltaTime;
-        minutes = Mathf.Floor(timeLeft / 60);   
-        seconds = timeLeft % 60;
-        if (seconds > 59) seconds = 59;
+        _timeLeft -= Time.deltaTime;
+        _minutes = Mathf.Floor(_timeLeft / 60);   
+        _seconds = _timeLeft % 60;
+        if (_seconds > 59) _seconds = 59;
 
 
-        if (timeLeft > 30)
+        if (_timeLeft > 30)
         {
-            text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
+            text.text = "Time left : " + _minutes + '"' + Mathf.Round(_seconds);
         }
         
 
-        if (timeLeft < 60)
+        if (_timeLeft < 60)
         {
             text.color = Color.red;
         }
 
-        if (timeLeft < 30)
+        if (_timeLeft < 30)
         {
             StartCoroutine(BlinkText());
         }
 
-        if (timeLeft < 0)
+        if (_timeLeft < 0)
         {
             CheckWinOrLoose();
         }
@@ -76,7 +78,7 @@ public class TimerManager : MonoBehaviour
         {
             text.text = "";
             yield return new WaitForSeconds(.5f);
-            text.text = "Time left : " + minutes + '"' + Mathf.Round(seconds);
+            text.text = "Time left : " + _minutes + '"' + Mathf.Round(_seconds);
             yield return new WaitForSeconds(.5f);
         }
     }
@@ -94,11 +96,6 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    void clignotementText()
-    {
-        //iTween.ColorTo(text.gameObject, iTween.Hash("a", 0, "time", 1.5f, "looptype", iTween.LoopType.pingPong));
-
-    }
 
 
 }
