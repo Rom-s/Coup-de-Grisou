@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
             if(oxygenBar <= 0)
             {
                 Debug.Log("C'est perdu");
+                SceneManager.LoadScene("GameOverScene");
             }
         }
         else
@@ -97,6 +100,7 @@ public class PlayerController : MonoBehaviour
                     if (gazLevel.GazRate > 100)
                     {
                         Debug.Log("Boum !");
+                        SceneManager.LoadScene("GameOverScene");
                     }
                     Debug.Log("coal hitted : " + Hit.point);
                     Hit.collider.gameObject.GetComponent<CoalBlock>().MineBlock();
