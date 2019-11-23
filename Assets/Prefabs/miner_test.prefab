@@ -4821,13 +4821,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5377241861427033180}
   - component: {fileID: 8736920844652787444}
+  - component: {fileID: 3355819866492667654}
   m_Layer: 0
   m_Name: Mouth Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5377241861427033180
 Transform:
   m_ObjectHideFlags: 0
@@ -4938,6 +4939,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3355819866492667654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2182348783072826544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693ed68c6258687428a737155461093a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suffoquementSounds:
+  - {fileID: 8300000, guid: 8b2767689f77dc84db3318801f25e345, type: 3}
 --- !u!1 &3088148300358411642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,7 +4970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9105852751849892227
 Transform:
   m_ObjectHideFlags: 0
@@ -5078,8 +5093,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24211de40c9fcf43ad377ef14d6065f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piouChillSounds: []
-  piouPanickedSound: {fileID: 0}
+  piouChillSounds:
+  - {fileID: 8300000, guid: 84d2bea2d6daec6488b5cee1b51e1c5d, type: 3}
+  - {fileID: 8300000, guid: 3e030f7f3533ec149b1fbd17782deccf, type: 3}
+  - {fileID: 8300000, guid: 514e96304ecb7f3498388d81c6886e80, type: 3}
+  - {fileID: 8300000, guid: cca386a90af6f2d459c04de8d3f97b60, type: 3}
+  - {fileID: 8300000, guid: cfe91e8d7404c6d4ea5f7977f1978682, type: 3}
+  - {fileID: 8300000, guid: 9d4b392365f59ef43ac718423d20274f, type: 3}
+  - {fileID: 8300000, guid: b9ea60bcce07d59468fa6e055a9d9ea7, type: 3}
+  - {fileID: 8300000, guid: 6c9dd02e5cd0daf44bb5b55e0ba8193f, type: 3}
+  - {fileID: 8300000, guid: c9f869cf3b0484b46ad7e659c7c7b269, type: 3}
+  - {fileID: 8300000, guid: b08fe8abdafa7c44480dcf299faf7792, type: 3}
+  - {fileID: 8300000, guid: 9b9ff702cc461704790477bb33fd40cf, type: 3}
+  piouLowPanickedSound: {fileID: 8300000, guid: 172fb58050c56fe488b123fc1624e159,
+    type: 3}
+  piouHighPanickedSound: {fileID: 8300000, guid: 5119ce80cb87c204ca7d2979457f42f1,
+    type: 3}
+  piouProbability: 0.01
 --- !u!1 &5108791897096607835
 GameObject:
   m_ObjectHideFlags: 0

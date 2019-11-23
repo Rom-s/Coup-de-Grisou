@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoalBlock : MonoBehaviour
 {
+    [SerializeField] private GameObject popAudioSource;
+    
     private float BlockLife = 5;
     // Start is called before the first frame update
     void Start()
@@ -14,10 +16,11 @@ public class CoalBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BlockLife == 0)
+        if(BlockLife <= 0)
         {
             ++ScoreManager.Instance.score;
-            GameObject.Destroy(gameObject);
+            Instantiate(popAudioSource, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
