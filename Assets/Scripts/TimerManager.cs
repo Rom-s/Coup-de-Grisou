@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TimerManager : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class TimerManager : MonoBehaviour
 
         if (timeLeft < 0)
         {
-            Debug.Log("Fin de la partie");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 

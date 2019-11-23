@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mixmod.unity
     guid: 17016b125d40cf44ea0978c9cb4eba99
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 44882efb3a1159f4190c4a4bedf96413
+  - enabled: 1
+    path: Assets/Scenes/Lousticos.unity
+    guid: c20ffd775e165934b8e8bf2499afafca
   m_configObjects: {}
