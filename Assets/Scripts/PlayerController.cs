@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour
     private float CoeffVerX = 0;
     private float CoeffVerZ = 1;
 
+    private GazLevel[] _gazLevels;
+
     // Start is called before the first frame update
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-
+        _gazLevels = FindObjectsOfType<GazLevel>();
+        Debug.Log(_gazLevels.Length);
     }
 
     // Update is called once per frame
@@ -47,14 +50,19 @@ public class PlayerController : MonoBehaviour
         if (_controller.isGrounded && _velocity.y < 0)
             _velocity.y = 0f;
 
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown("Mine"))
         {
             if (Physics.Raycast(transform.position, transform.forward, out Hit, 1))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * Hit.distance, Color.yellow);
                 if (Hit.collider.tag == "Coal")
                 {
+                    GazLevel gazLevel = GetCurrentGazLevel();
+                    gazLevel.IncreaseGazLevel();
+                    if (gazLevel.GazRate > 100)
+                    {
+                        Debug.Log("Boum !");
+                    }
                     Debug.Log("coal hitted : " + Hit.point);
                     Hit.collider.gameObject.GetComponent<CoalBlock>().MineBlock();
                 }
@@ -162,5 +170,16 @@ public class PlayerController : MonoBehaviour
                 CoeffVerZ = -1;
             }
         }
+    }
+
+    GazLevel GetCurrentGazLevel()
+    {
+        foreach (var gl in _gazLevels)
+        {
+            if (gl.ActiveLevel)
+                return gl;
+        }
+
+        return null;
     }
 }
