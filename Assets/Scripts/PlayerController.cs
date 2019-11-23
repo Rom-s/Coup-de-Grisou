@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lastPosition;
 
-    public Text oxygenTextBar;
-
     private CharacterController _controller;
 
     public Look spriteLooker;
@@ -27,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private RaycastHit Hit;
     [SerializeField] private float _miningDistance = 1.5f;
 
+    public bool oxygenChange = false;
     private float oxygenBar = 100;
     [SerializeField] private float oxygenBarMax = 100;
     [SerializeField] private float oxygenLoss = 30;
@@ -88,23 +87,30 @@ public class PlayerController : MonoBehaviour
 
         if (/*move == Vector3.zero*/ transform.position == lastPosition)
         {
-            oxygenBar -= oxygenLoss * Time.deltaTime;
-            if (oxygenBar <= 0)
+            if (oxygenChange)
             {
-                Debug.Log("C'est perdu");
-                SceneManager.LoadScene("GameOverScene");
+                oxygenBar -= oxygenLoss * Time.deltaTime;
+                if (oxygenBar <= 0)
+                {
+                    Debug.Log("C'est perdu");
+                    SceneManager.LoadScene("GameOverScene");
+                }
             }
+
         }
         else
         {
             footStepAudioController.PlayOne();
-            oxygenBar += oxygenGain * Time.deltaTime;
-            if (oxygenBar >= oxygenBarMax)
+            if (oxygenChange)
             {
-                oxygenBar = oxygenBarMax;
+                oxygenBar += oxygenGain * Time.deltaTime;
+                if (oxygenBar >= oxygenBarMax)
+                {
+                    oxygenBar = oxygenBarMax;
+                }
             }
+
         }
-        oxygenTextBar.text = "Oxygen : " + (int) oxygenBar;
 
         if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
         {
