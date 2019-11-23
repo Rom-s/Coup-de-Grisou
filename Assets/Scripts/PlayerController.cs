@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     private CharacterController _controller;
 
     public Look spriteLooker;
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private GazLevel[] _gazLevels;
 
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        particles.Stop();
         //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
         Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
@@ -75,10 +79,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Mine"))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out Hit, 1))
+            if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z), transform.forward, out Hit, 1))
             {
                 if (Hit.collider.tag == "Coal")
                 {
+                    particles.Play();
+
                     GazLevel gazLevel = GetCurrentGazLevel();
                     gazLevel.IncreaseGazLevel();
                     if (gazLevel.GazRate > 100)
