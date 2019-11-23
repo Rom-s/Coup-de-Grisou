@@ -26,7 +26,7 @@ public class TimerManager : MonoBehaviour
 
     #endregion
     
-    private float _timeLeft;
+    private float _timeLeft = 240;
 
     private float _minutes;
     private float _seconds;
@@ -36,8 +36,7 @@ public class TimerManager : MonoBehaviour
     void Awake()
     {
         text = GetComponent<Text>();
-        //Definition du temps de jeu
-        _timeLeft = 90;
+
     }
 
 

@@ -4948,7 +4948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9105852751849892227}
   - component: {fileID: 5429492910287224365}
-  - component: {fileID: 1014142319766738282}
   m_Layer: 0
   m_Name: Piou Audio Source
   m_TagString: Untagged
@@ -5066,20 +5065,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1014142319766738282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3088148300358411642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24211de40c9fcf43ad377ef14d6065f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  piouChillSounds: []
-  piouPanickedSound: {fileID: 0}
 --- !u!1 &5108791897096607835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,7 +5109,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5411,8 +5396,8 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.6951967, b: 0.037246335, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 2
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5511,7 +5496,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.4
-  m_Radius: 0.6
+  m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
@@ -5529,10 +5514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896580bc6712470439dbaf50dfee7005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minerSprite: {fileID: 9194722414244053328}
+  oxygenTextBar: {fileID: 0}
   spriteLooker: {fileID: 9194722414244053331}
-  Speed: 2
+  Speed: 4
   oxygenBarMax: 100
-  oxygenLoss: 5
+  oxygenLoss: 15
   oxygenGain: 5
   particles: {fileID: 218934161}
   footStepAudioController: {fileID: 4370985691205860770}

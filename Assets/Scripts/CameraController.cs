@@ -53,13 +53,13 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        if (Input.GetAxis("CameraHorizontal")>0 && !_locked)
+        if (Input.GetAxis("CameraHorizontal")>0 && !_locked && !_isRotating)
         {
             RotateRight();
             _locked = true;
         }
         
-        if (Input.GetAxis("CameraHorizontal")<0 && !_locked)
+        if (Input.GetAxis("CameraHorizontal")<0 && !_locked && !_isRotating)
         {
             RotateLeft();
             _locked = true;
