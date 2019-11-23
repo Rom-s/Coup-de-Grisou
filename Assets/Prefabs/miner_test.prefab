@@ -4984,6 +4984,7 @@ GameObject:
   - component: {fileID: 9194722414244053329}
   - component: {fileID: 9194722414244053328}
   - component: {fileID: 9194722414244053331}
+  - component: {fileID: 2989583556510933412}
   m_Layer: 2
   m_Name: miner_test
   m_TagString: Untagged
@@ -5068,3 +5069,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraObject: {fileID: 0}
+--- !u!95 &2989583556510933412
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194722414244053334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c63b0f57b7b733e43a9d9be83d789a9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
