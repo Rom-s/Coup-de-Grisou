@@ -21,6 +21,7 @@ public class BaseCollider : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        Debug.Log("bla");
         if (collision.gameObject == player)
         {
             controller.oxygenChange = true;
