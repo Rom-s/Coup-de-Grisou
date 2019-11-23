@@ -857,7 +857,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991131246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 846b0c8daa4391e4e84d3c19c48e2856, type: 3}
+  m_Script: {fileID: 11500000, guid: 2315eeeb1f1e11b45bc812be53c6e2b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1991131249
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1991131248}
-        m_MethodName: PlayAgain
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
