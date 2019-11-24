@@ -5502,6 +5502,7 @@ GameObject:
   - component: {fileID: 9194722413888252568}
   - component: {fileID: 9194722413888252574}
   - component: {fileID: 9194722413888252571}
+  - component: {fileID: 1230435223}
   m_Layer: 2
   m_Name: miner_test
   m_TagString: Untagged
@@ -5570,7 +5571,23 @@ MonoBehaviour:
   oxygenLoss: 11
   oxygenGain: 5
   particles: {fileID: 218934161}
+  footStepAudioController: {fileID: 4370985691205860770}
+  piocheAudioController: {fileID: 2108481310175636741}
   playerAnimator: {fileID: 2989583556510933412}
+--- !u!136 &1230435223
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194722413888252575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &9194722414244053334
 GameObject:
   m_ObjectHideFlags: 0
