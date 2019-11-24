@@ -68,6 +68,7 @@ public class TimerManager : MonoBehaviour
 
         if (_timeLeft < 0)
         {
+            _timeLeft = -0.1f;
             CheckWinOrLoose();
         }
     }
@@ -88,7 +89,7 @@ public class TimerManager : MonoBehaviour
     public void CheckWinOrLoose()
     {
         /////////////  TODO il faudra vérifier la zone dans lequel est le joueur, il doit être en haut
-        if (ScoreManager.Instance.score > seuilScore)
+        if (ScoreManager.Instance.score > seuilScore && _timeLeft > 0)
         {
             SceneManager.LoadScene("WinScene");
         }
