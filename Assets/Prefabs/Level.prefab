@@ -57,5 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee11f1177edc9944696d241a61bc4831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseStep: 13
+  increaseStep: 20.5
   decreaseSpeed: 10
