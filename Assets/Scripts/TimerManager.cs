@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimerManager : MonoBehaviour
 {
 
-    private int seuilScore = 2;
+    [SerializeField] private int seuilScore = 2;
 
     #region Singleton
     private static TimerManager instance;
@@ -26,7 +26,7 @@ public class TimerManager : MonoBehaviour
 
     #endregion
     
-    private float _timeLeft = 240;
+    public float _timeLeft;
 
 
 
@@ -68,6 +68,7 @@ public class TimerManager : MonoBehaviour
 
         if (_timeLeft < 0)
         {
+            _timeLeft = -0.1f;
             CheckWinOrLoose();
         }
     }
@@ -88,7 +89,7 @@ public class TimerManager : MonoBehaviour
     public void CheckWinOrLoose()
     {
         /////////////  TODO il faudra vérifier la zone dans lequel est le joueur, il doit être en haut
-        if (ScoreManager.Instance.score > seuilScore)
+        if (ScoreManager.Instance.score > seuilScore && _timeLeft > 0)
         {
             SceneManager.LoadScene("WinScene");
         }

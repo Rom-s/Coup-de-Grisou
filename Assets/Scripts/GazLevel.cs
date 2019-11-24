@@ -28,6 +28,7 @@ public class GazLevel : MonoBehaviour
     public void IncreaseGazLevel()
     {
         GazRate += increaseStep;
+        //Debug.Log("GazRate" + GazRate);
     }
 
     private void OnTriggerEnter(Collider other)

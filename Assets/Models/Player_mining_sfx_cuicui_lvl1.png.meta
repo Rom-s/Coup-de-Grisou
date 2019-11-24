@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 6ef147ad7cdafd945b6adf5ff9397cab
+guid: d967626359a6b1f49bb7c64ad91cba17
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3397251614654512358
-    second: Player_run_0
+      213: -1016442465265048268
+    second: Player_mining_sfx_cuicui_lvl1_0
   - first:
-      213: -5350474857167352417
-    second: Player_run_1
+      213: 5941206783569334166
+    second: Player_mining_sfx_cuicui_lvl1_1
   - first:
-      213: 3937184271007089793
-    second: Player_run_2
+      213: 5784827682662925505
+    second: Player_mining_sfx_cuicui_lvl1_2
   - first:
-      213: -5476680173833678154
-    second: Player_run_3
-  - first:
-      213: 3810140742603224602
-    second: Player_run_4
-  - first:
-      213: 5945417362706413012
-    second: Player_run_5
-  - first:
-      213: 9155487761158527389
-    second: Player_run_6
-  - first:
-      213: -4283589944186708566
-    second: Player_run_7
+      213: 8437786642710302963
+    second: Player_mining_sfx_cuicui_lvl1_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -122,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_run_0
+      name: Player_mining_sfx_cuicui_lvl1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d04ec9de1b617ed4b95d421e2389581f
-      internalID: 3397251614654512358
+      spriteID: 39132410b6c1c724d906a5778b27ef9d
+      internalID: -1016442465265048268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_run_1
+      name: Player_mining_sfx_cuicui_lvl1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -157,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 261c875b24f5952498bce92de5684d60
-      internalID: -5350474857167352417
+      spriteID: 5f409d69a807ecc4a9f42f623d6a4401
+      internalID: 5941206783569334166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_run_2
+      name: Player_mining_sfx_cuicui_lvl1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -178,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 298d71847c4103a48acb7242333314e0
-      internalID: 3937184271007089793
+      spriteID: 4a6c105359907d2428b947e12d7c6bc8
+      internalID: 5784827682662925505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_run_3
+      name: Player_mining_sfx_cuicui_lvl1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -199,92 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45fec06982b822242bd0106a2104c4c8
-      internalID: -5476680173833678154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_run_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48fd790340213074fb1f6974751762b6
-      internalID: 3810140742603224602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_run_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 946819f85f8217446ad839552a74521f
-      internalID: 5945417362706413012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_run_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8317a8f02e626194495535937dc2498b
-      internalID: 9155487761158527389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_run_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07850d1abda3db443819122df5271799
-      internalID: -4283589944186708566
+      spriteID: 3536cb93f5756c344a3558ae09e9391b
+      internalID: 8437786642710302963
       vertices: []
       indices: 
       edges: []
@@ -292,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 059fb63ec33409f459a2438737264379
+    spriteID: d89c662a48c71994c8dd9418953990b0
     internalID: 0
     vertices: []
     indices: 
