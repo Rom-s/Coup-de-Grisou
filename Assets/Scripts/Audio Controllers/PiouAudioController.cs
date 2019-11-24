@@ -15,6 +15,8 @@ public class PiouAudioController : MonoBehaviour
     [SerializeField] private float piouProbability;
     
     private AudioSource _audioSource;
+
+    private bool panicked = false;
     
     private void Start()
     {
@@ -23,7 +25,7 @@ public class PiouAudioController : MonoBehaviour
 
     private void Update()
     {
-        if (!_audioSource.isPlaying)
+        if (!_audioSource.isPlaying && panicked)
         {
             float p = Random.Range(0f, 1f);
             if (p < piouProbability)
@@ -37,6 +39,7 @@ public class PiouAudioController : MonoBehaviour
 
     public void PlayLowPanicked()
     {
+        panicked = true;
         if (!_audioSource.isPlaying)
         {
             _audioSource.PlayOneShot(piouLowPanickedSound);
@@ -45,10 +48,20 @@ public class PiouAudioController : MonoBehaviour
 
     public void PlayHighPanicked()
     {
+        panicked = true;
         if (!_audioSource.isPlaying)
         {
             _audioSource.PlayOneShot(piouHighPanickedSound);
         }
         
+    }
+
+    public void Panick()
+    {
+        panicked = true;
+    }
+    public void NoPanick()
+    {
+        panicked = false;
     }
 }

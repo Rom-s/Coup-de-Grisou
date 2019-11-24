@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
 
         if (/*move == Vector3.zero*/ transform.position == lastPosition)
         {
+            playerAnimator.SetBool("IsRunning", false);
+
             if (oxygenChange)
             {
                 oxygenBar -= oxygenLoss * Time.deltaTime;
@@ -114,6 +116,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             _footStepAudioController.PlayOne();
+            playerAnimator.SetBool("IsRunning", true);
             if (oxygenChange)
             {
                 oxygenBar += oxygenGain * Time.deltaTime;
@@ -138,8 +141,6 @@ public class PlayerController : MonoBehaviour
 
         GazLevel gazLevel = GetCurrentGazLevel();
 
-        Debug.Log(oxygenBar);
-
         playerLight.intensity = (oxygenBar / 100) * 2;
 
         
@@ -159,10 +160,23 @@ public class PlayerController : MonoBehaviour
             if (gazLevel.GazRate >= 80)
             {
                 _piouAudioController.PlayHighPanicked();
+                playerAnimator.SetBool("Level2", true);
             }
             else if (gazLevel.GazRate >= 60)
             {
                 _piouAudioController.PlayLowPanicked();
+            }
+            else if (gazLevel.GazRate < 80)
+            {
+                playerAnimator.SetBool("Level2", false);
+            }
+            else if (gazLevel.GazRate >= 40)
+            {
+                _piouAudioController.Panick();
+            }
+            else
+            {
+                _piouAudioController.NoPanick();
             }
         }
     }

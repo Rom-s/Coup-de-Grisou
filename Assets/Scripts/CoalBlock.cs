@@ -27,5 +27,6 @@ public class CoalBlock : MonoBehaviour
     public void MineBlock()
     {
         BlockLife -= 1;
+        Debug.Log("Block life = " + BlockLife);
     }
 }
