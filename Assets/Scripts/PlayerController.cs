@@ -121,35 +121,7 @@ public class PlayerController : MonoBehaviour
 
         playerLight.intensity = (oxygenBar / 100) * 2;
 
-        if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
-        {
-            if (Physics.Raycast(new Vector3(transform.position.x,transform.position.y+0.5f,transform.position.z), transform.forward, out Hit, _miningDistance))
-            {
-                if (Hit.collider.tag == "Coal")
-                {
-                    particles.Play();
-                    piocheAudioController.PlayOne();
-
-                    GazLevel gazLevel = GetCurrentGazLevel();
-                    gazLevel.IncreaseGazLevel();
-                    if (gazLevel.GazRate > 100)
-                    {
-                        Debug.Log("Boum !");
-                        SceneManager.LoadScene("GameOverScene");
-                    }
-                    Debug.Log("coal hitted : " + Hit.point);
-                    Hit.collider.gameObject.GetComponent<CoalBlock>().MineBlock();
-                }
-                else
-                {
-                    Debug.Log("not coal : " + Hit.point);
-                }
-            }
-            else
-            {
-                Debug.Log("no hit");
-            }
-        }
+        
         if(spriteLooker != null)
         {
             spriteLooker.LookCamera();
@@ -249,4 +221,31 @@ public class PlayerController : MonoBehaviour
 
         return null;
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
+        {
+
+                if (other.tag == "Coal")
+                {
+                    particles.Play();
+                    piocheAudioController.PlayOne();
+
+                    GazLevel gazLevel = GetCurrentGazLevel();
+                    gazLevel.IncreaseGazLevel();
+                    if (gazLevel.GazRate > 100)
+                    {
+                        Debug.Log("Boum !");
+                        SceneManager.LoadScene("GameOverScene");
+                    }
+                    other.gameObject.GetComponent<CoalBlock>().MineBlock();
+                }
+                else
+                {
+                    Debug.Log("not coal : " + Hit.point);
+                }
+        }
+    }
 }
+
