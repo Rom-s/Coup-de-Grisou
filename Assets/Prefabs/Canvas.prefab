@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5181eeb0ce60a7c4ebd4da11f645229c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seuilScore: 4
+  seuilScore: 14
   _timeLeft: 360
 --- !u!1 &8468279392046608040
 GameObject:

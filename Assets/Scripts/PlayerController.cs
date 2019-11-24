@@ -138,8 +138,6 @@ public class PlayerController : MonoBehaviour
 
         GazLevel gazLevel = GetCurrentGazLevel();
 
-        Debug.Log(oxygenBar);
-
         playerLight.intensity = (oxygenBar / 100) * 2;
 
         
@@ -168,6 +166,14 @@ public class PlayerController : MonoBehaviour
             else if (gazLevel.GazRate < 80)
             {
                 playerAnimator.SetBool("Level2", false);
+            }
+            else if (gazLevel.GazRate >= 40)
+            {
+                _piouAudioController.Panick();
+            }
+            else
+            {
+                _piouAudioController.NoPanick();
             }
         }
     }
