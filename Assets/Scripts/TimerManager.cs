@@ -26,7 +26,7 @@ public class TimerManager : MonoBehaviour
 
     #endregion
     
-    private float _timeLeft = 240;
+    public float _timeLeft;
 
 
 
