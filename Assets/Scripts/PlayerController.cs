@@ -97,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
         if (/*move == Vector3.zero*/ transform.position == lastPosition)
         {
+            playerAnimator.SetBool("IsRunning", false);
+
             if (oxygenChange)
             {
                 oxygenBar -= oxygenLoss * Time.deltaTime;
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             _footStepAudioController.PlayOne();
+            playerAnimator.SetBool("IsRunning", true);
             if (oxygenChange)
             {
                 oxygenBar += oxygenGain * Time.deltaTime;
