@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Light playerLight;
+
     public SpriteRenderer minerSprite;
 
     private Vector3 lastPosition;
@@ -114,6 +116,10 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+        Debug.Log(oxygenBar);
+
+        playerLight.intensity = (oxygenBar / 100) * 2;
 
         if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
         {
