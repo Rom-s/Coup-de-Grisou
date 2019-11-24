@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
 
     public Animator playerAnimator;
 
+    [SerializeField] private GameObject explosion;
+    
+    private bool boum = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -150,7 +153,7 @@ public class PlayerController : MonoBehaviour
             if (gazLevel.GazRate > 100)
             {
                 Debug.Log("Boum !");
-                SceneManager.LoadScene("GameOverScene");
+                Boum();
             }
 
             if (gazLevel.GazRate >= 80)
@@ -161,6 +164,19 @@ public class PlayerController : MonoBehaviour
             {
                 _piouAudioController.PlayLowPanicked();
             }
+        }
+    }
+
+    private void Boum()
+    {
+        if (!boum)
+        {
+            boum = true; 
+            GameObject cam = GetComponentInChildren<Look>().cameraObject;
+
+            Vector3 vect = cam.transform.position - transform.position;
+            
+            Instantiate(explosion, transform.position + vect/3, transform.GetChild(1).rotation);
         }
     }
 
@@ -176,7 +192,7 @@ public class PlayerController : MonoBehaviour
                 CoeffHorZ = 1;
                 CoeffVerX = -1;
                 CoeffVerZ = 0;
-}
+            }
             else
             {
                 CoeffHorX = 0;
@@ -263,26 +279,26 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Mine") && lastPosition == transform.position)
         {
 
-                if (other.tag == "Coal")
-                {
-                    playerAnimator.SetTrigger("IsMining");
-                    particles.Play();
-                    _piocheAudioController.PlayOne();
+            if (other.tag == "Coal")
+            {
+                playerAnimator.SetTrigger("IsMining");
+                particles.Play();
+                _piocheAudioController.PlayOne();
 
-                    GazLevel gazLevel = GetCurrentGazLevel();
-                    gazLevel.IncreaseGazLevel();
-                    if (gazLevel.GazRate > 100)
-                    {
-                        Debug.Log("Boum !");
-                        SceneManager.LoadScene("GameOverScene");
-                    }
-                    other.gameObject.GetComponent<CoalBlock>().MineBlock();
-                }
-                else
+                GazLevel gazLevel = GetCurrentGazLevel();
+                gazLevel.IncreaseGazLevel();
+                if (gazLevel.GazRate > 100)
                 {
-                    Debug.Log("not coal : " + Hit.point);
+                    Debug.Log("Boum !");
+                    Boum();
                 }
+                other.gameObject.GetComponent<CoalBlock>().MineBlock();
+            }
+            else
+            {
+                Debug.Log("not coal : " + Hit.point);
+            }
         }
     }
-}
 
+}

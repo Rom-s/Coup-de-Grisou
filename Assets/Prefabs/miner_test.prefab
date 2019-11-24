@@ -5571,9 +5571,9 @@ MonoBehaviour:
   oxygenLoss: 11
   oxygenGain: 5
   particles: {fileID: 218934161}
-  footStepAudioController: {fileID: 4370985691205860770}
-  piocheAudioController: {fileID: 2108481310175636741}
   playerAnimator: {fileID: 2989583556510933412}
+  explosion: {fileID: 2217319766555822516, guid: fbd192aa4a135e14683273190ca7a4a0,
+    type: 3}
 --- !u!136 &1230435223
 CapsuleCollider:
   m_ObjectHideFlags: 0
