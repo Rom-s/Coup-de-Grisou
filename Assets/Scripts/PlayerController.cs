@@ -157,24 +157,29 @@ public class PlayerController : MonoBehaviour
             if (gazLevel.GazRate >= 80)
             {
                 _piouAudioController.PlayHighPanicked();
-                playerAnimator.SetBool("Level2", true);
+                /*playerAnimator.SetBool("Level2", true);
+                Debug.Log("gaz TRUE");*/
             }
             else if (gazLevel.GazRate >= 60)
             {
                 _piouAudioController.PlayLowPanicked();
-            }
-            else if (gazLevel.GazRate < 80)
-            {
-                playerAnimator.SetBool("Level2", false);
+                /*playerAnimator.SetBool("Level2", true);
+                Debug.Log("gaz TRUE");*/
             }
             else if (gazLevel.GazRate >= 40)
             {
+                //playerAnimator.SetBool("Level2", false);
                 _piouAudioController.Panick();
+                //Debug.Log("gaz FALSE");
             }
             else
             {
+                //playerAnimator.SetBool("Level2", false);
                 _piouAudioController.NoPanick();
+                //Debug.Log("gaz FALSE");
             }
+
+            Debug.Log("GAZ LEVEL : " + gazLevel.GazRate);
         }
     }
 
@@ -283,18 +288,17 @@ public class PlayerController : MonoBehaviour
                     particles.Play();
                     _piocheAudioController.PlayOne();
 
-                    GazLevel gazLevel = GetCurrentGazLevel();
-                    gazLevel.IncreaseGazLevel();
-                    if (gazLevel.GazRate > 100)
+                    if(other.gameObject.GetComponent<CoalBlock>().GetBlocLife() > 0)
                     {
-                        Debug.Log("Boum !");
-                        SceneManager.LoadScene("GameOverScene");
+                        GazLevel gazLevel = GetCurrentGazLevel();
+                        gazLevel.IncreaseGazLevel();
+                        if (gazLevel.GazRate > 100)
+                        {
+                            SceneManager.LoadScene("GameOverScene");
+                        }
+                        other.gameObject.GetComponent<CoalBlock>().MineBlock();
                     }
-                    other.gameObject.GetComponent<CoalBlock>().MineBlock();
-                }
-                else
-                {
-                    Debug.Log("not coal : " + Hit.point);
+
                 }
         }
     }
