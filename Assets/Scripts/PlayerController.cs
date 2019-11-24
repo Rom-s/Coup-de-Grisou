@@ -162,24 +162,24 @@ public class PlayerController : MonoBehaviour
                 if (gazLevel.GazRate >= 80)
                 {
                     _piouAudioController.PlayHighPanicked();
-                    /*playerAnimator.SetBool("Level2", true);
-                    Debug.Log("gaz TRUE");*/
+                    playerAnimator.SetBool("Level2", true);
+                    /*Debug.Log("gaz TRUE");*/
                 }
                 else if (gazLevel.GazRate >= 60)
                 {
                     _piouAudioController.PlayLowPanicked();
-                    /*playerAnimator.SetBool("Level2", true);
-                    Debug.Log("gaz TRUE");*/
+                    playerAnimator.SetBool("Level2", true);
+                    /*Debug.Log("gaz TRUE");*/
                 }
                 else if (gazLevel.GazRate >= 40)
                 {
-                    //playerAnimator.SetBool("Level2", false);
+                    playerAnimator.SetBool("Level2", false);
                     _piouAudioController.Panick();
                     //Debug.Log("gaz FALSE");
                 }
                 else
                 {
-                    //playerAnimator.SetBool("Level2", false);
+                    playerAnimator.SetBool("Level2", false);
                     _piouAudioController.NoPanick();
                     //Debug.Log("gaz FALSE");
                 }
