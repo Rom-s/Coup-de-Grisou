@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (Hit.collider.tag == "Coal")
                 {
+                    playerAnimator.SetTrigger("IsMining");
+
                     particles.Play();
                     piocheAudioController.PlayOne();
 
@@ -144,12 +146,14 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("no hit");
             }
         }
-        if(spriteLooker != null)
+        if (spriteLooker != null)
         {
             spriteLooker.LookCamera();
         }
         //Debug.Log("Oxygen = " + oxygenBar);
+
     }
+
 
     public void RotateRight()
     {
