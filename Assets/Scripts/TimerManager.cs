@@ -52,7 +52,7 @@ public class TimerManager : MonoBehaviour
 
         if (_timeLeft > 30)
         {
-            text.text = "Time left : " + _minutes + '"' + Mathf.Round(_seconds);
+            text.text = _minutes.ToString() + '"' + Mathf.Round(_seconds);
         }
         
 
