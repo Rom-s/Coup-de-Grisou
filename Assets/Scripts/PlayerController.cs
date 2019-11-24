@@ -70,120 +70,124 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lastPosition = transform.position;
-        particles.Stop();
-        //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
-        Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
-
-        _controller.Move(move * Time.deltaTime * Speed);
-
-        if(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") > 0)
+        if (!boum)
         {
-            minerSprite.flipX = false;
-        }
-        else if(Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") < 0)
-        {
-            minerSprite.flipX = true;
+            lastPosition = transform.position;
+            particles.Stop();
+            //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
+            Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
 
-        }
+            _controller.Move(move * Time.deltaTime * Speed);
 
-        /* ce sera pour orienter le personnage.*/
-        if (move != Vector3.zero)
-            transform.forward = move;
-        
-        _velocity.y += Gravity * Time.deltaTime;
-        _controller.Move(_velocity * Time.deltaTime);
-
-        if (_controller.isGrounded && _velocity.y < 0)
-            _velocity.y = 0f;
-
-        if (/*move == Vector3.zero*/ transform.position == lastPosition)
-        {
-            playerAnimator.SetBool("IsRunning", false);
-
-            if (oxygenChange)
+            if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") > 0)
             {
-                oxygenBar -= oxygenLoss * Time.deltaTime;
-                if (oxygenBar <= 0)
+                minerSprite.flipX = false;
+            }
+            else if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") < 0)
+            {
+                minerSprite.flipX = true;
+
+            }
+
+            /* ce sera pour orienter le personnage.*/
+            if (move != Vector3.zero)
+                transform.forward = move;
+
+            _velocity.y += Gravity * Time.deltaTime;
+            _controller.Move(_velocity * Time.deltaTime);
+
+            if (_controller.isGrounded && _velocity.y < 0)
+                _velocity.y = 0f;
+
+            if (/*move == Vector3.zero*/ transform.position == lastPosition)
+            {
+                playerAnimator.SetBool("IsRunning", false);
+
+                if (oxygenChange)
                 {
-                    Debug.Log("C'est perdu");
-                    SceneManager.LoadScene("GameOverScene");
+                    oxygenBar -= oxygenLoss * Time.deltaTime;
+                    if (oxygenBar <= 0)
+                    {
+                        Debug.Log("C'est perdu");
+                        SceneManager.LoadScene("GameOverScene");
+                    }
                 }
-            }
 
-        }
-        else
-        {
-            _footStepAudioController.PlayOne();
-            playerAnimator.SetBool("IsRunning", true);
-            if (oxygenChange)
-            {
-                oxygenBar += oxygenGain * Time.deltaTime;
-                if (oxygenBar >= oxygenBarMax)
-                {
-                    oxygenBar = oxygenBarMax;
-                }
-            }
-        }
-
-        if (oxygenBar <= 30)
-        {
-            _voiceAudioController.PlayOne();
-        }
-        
-        /* ce sera pour orienter le personnage.*/
-        if (move != Vector3.zero)
-            transform.forward = move;
-        
-        _velocity.y += Gravity * Time.deltaTime;
-        _controller.Move(_velocity * Time.deltaTime);
-
-        GazLevel gazLevel = GetCurrentGazLevel();
-
-        playerLight.intensity = (oxygenBar / 100) * 2;
-
-        
-        if(spriteLooker != null)
-        {
-            spriteLooker.LookCamera();
-        }
-
-        if (gazLevel)
-        {
-            if (gazLevel.GazRate > 100)
-            {
-                Debug.Log("Boum !");
-                Boum();
-            }
-
-            if (gazLevel.GazRate >= 80)
-            {
-                _piouAudioController.PlayHighPanicked();
-                /*playerAnimator.SetBool("Level2", true);
-                Debug.Log("gaz TRUE");*/
-            }
-            else if (gazLevel.GazRate >= 60)
-            {
-                _piouAudioController.PlayLowPanicked();
-                /*playerAnimator.SetBool("Level2", true);
-                Debug.Log("gaz TRUE");*/
-            }
-            else if (gazLevel.GazRate >= 40)
-            {
-                //playerAnimator.SetBool("Level2", false);
-                _piouAudioController.Panick();
-                //Debug.Log("gaz FALSE");
             }
             else
             {
-                //playerAnimator.SetBool("Level2", false);
-                _piouAudioController.NoPanick();
-                //Debug.Log("gaz FALSE");
+                _footStepAudioController.PlayOne();
+                playerAnimator.SetBool("IsRunning", true);
+                if (oxygenChange)
+                {
+                    oxygenBar += oxygenGain * Time.deltaTime;
+                    if (oxygenBar >= oxygenBarMax)
+                    {
+                        oxygenBar = oxygenBarMax;
+                    }
+                }
             }
 
-            Debug.Log("GAZ LEVEL : " + gazLevel.GazRate);
+            if (oxygenBar <= 30)
+            {
+                _voiceAudioController.PlayOne();
+            }
+
+            /* ce sera pour orienter le personnage.*/
+            if (move != Vector3.zero)
+                transform.forward = move;
+
+            _velocity.y += Gravity * Time.deltaTime;
+            _controller.Move(_velocity * Time.deltaTime);
+
+            GazLevel gazLevel = GetCurrentGazLevel();
+
+            playerLight.intensity = (oxygenBar / 100) * 2;
+
+
+            if (spriteLooker != null)
+            {
+                spriteLooker.LookCamera();
+            }
+
+            if (gazLevel)
+            {
+                if (gazLevel.GazRate > 100)
+                {
+                    Debug.Log("Boum !");
+                    Boum();
+                }
+
+                if (gazLevel.GazRate >= 80)
+                {
+                    _piouAudioController.PlayHighPanicked();
+                    /*playerAnimator.SetBool("Level2", true);
+                    Debug.Log("gaz TRUE");*/
+                }
+                else if (gazLevel.GazRate >= 60)
+                {
+                    _piouAudioController.PlayLowPanicked();
+                    /*playerAnimator.SetBool("Level2", true);
+                    Debug.Log("gaz TRUE");*/
+                }
+                else if (gazLevel.GazRate >= 40)
+                {
+                    //playerAnimator.SetBool("Level2", false);
+                    _piouAudioController.Panick();
+                    //Debug.Log("gaz FALSE");
+                }
+                else
+                {
+                    //playerAnimator.SetBool("Level2", false);
+                    _piouAudioController.NoPanick();
+                    //Debug.Log("gaz FALSE");
+                }
+
+                Debug.Log("GAZ LEVEL : " + gazLevel.GazRate);
+            }
         }
+        
     }
 
     private void Boum()
@@ -311,6 +315,7 @@ public class PlayerController : MonoBehaviour
                     if (gazLevel.GazRate > 100)
                     {
                         Debug.Log("Boum !");
+                        
                         Boum();
                     }
 
