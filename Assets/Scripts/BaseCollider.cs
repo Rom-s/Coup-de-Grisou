@@ -10,19 +10,19 @@ public class BaseCollider : MonoBehaviour
 
     public PlayerController controller;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject == player)
+        if(other.gameObject == player)
         {
             manager.CheckWinOrLoose();
             controller.oxygenChange = false;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         Debug.Log("bla");
-        if (collision.gameObject == player)
+        if (other.gameObject == player)
         {
             controller.oxygenChange = true;
         }
