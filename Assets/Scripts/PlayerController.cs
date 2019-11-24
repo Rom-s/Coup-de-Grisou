@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if (!boum)
         {
             lastPosition = transform.position;
-            particles.Stop();
+            //particles.Stop();
             //gameObject.transform.position += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             //gameObject.transform.Translate(new Vector3(0.5f * Input.GetAxis("Horizontal"), 0, 0.5f * Input.GetAxis("Vertical")));
             Vector3 move = new Vector3(CoeffHorX * Input.GetAxis("Horizontal") + CoeffVerX * Input.GetAxis("Vertical"), 0, CoeffHorZ * Input.GetAxis("Horizontal") + CoeffVerZ * Input.GetAxis("Vertical"));
