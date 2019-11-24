@@ -162,9 +162,8 @@ public class PlayerController : MonoBehaviour
                 _piouAudioController.PlayLowPanicked();
             }
         }
-
-        //Debug.Log("Oxygen = " + oxygenBar);
     }
+
 
     public void RotateRight()
     {
@@ -266,6 +265,7 @@ public class PlayerController : MonoBehaviour
 
                 if (other.tag == "Coal")
                 {
+                    playerAnimator.SetTrigger("IsMining");
                     particles.Play();
                     _piocheAudioController.PlayOne();
 
