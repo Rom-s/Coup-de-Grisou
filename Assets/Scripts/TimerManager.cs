@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimerManager : MonoBehaviour
 {
 
-    private int seuilScore = 2;
+    [SerializeField] private int seuilScore = 2;
 
     #region Singleton
     private static TimerManager instance;
