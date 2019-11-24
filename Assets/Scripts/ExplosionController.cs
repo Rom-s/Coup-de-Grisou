@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class ExplosionController : MonoBehaviour
 {
     [SerializeField] private AudioClip[] expSounds;
-    
+
     private AudioSource _audioSource;
 
     private Animator _animator;
@@ -17,9 +17,9 @@ public class ExplosionController : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
-        
+
         _animator.SetTrigger("boum");
-        
+
         int index = Random.Range(0, expSounds.Length);
         _audioSource.PlayOneShot(expSounds[index]);
     }
