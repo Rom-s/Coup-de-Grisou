@@ -43,12 +43,13 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem particles;
 
     //Sounds:
-    [SerializeField] private FootStepAudioController footStepAudioController;
-    [SerializeField] private PiocheAudioController piocheAudioController;
+    private FootStepAudioController _footStepAudioController;
+    private PiocheAudioController _piocheAudioController;
+    private PiouAudioController _piouAudioController;
+    private VoiceAudioController _voiceAudioController;
 
 
     public Animator playerAnimator;
-
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +57,11 @@ public class PlayerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         oxygenBar = oxygenBarMax;
         _gazLevels = FindObjectsOfType<GazLevel>();
-        Debug.Log(_gazLevels.Length);
+
+        _footStepAudioController = GetComponentInChildren<FootStepAudioController>();
+        _piocheAudioController = GetComponentInChildren<PiocheAudioController>();
+        _piouAudioController = GetComponentInChildren<PiouAudioController>();
+        _voiceAudioController = GetComponentInChildren<VoiceAudioController>();
     }
 
     // Update is called once per frame
@@ -105,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            footStepAudioController.PlayOne();
+            _footStepAudioController.PlayOne();
             if (oxygenChange)
             {
                 oxygenBar += oxygenGain * Time.deltaTime;
@@ -114,8 +119,21 @@ public class PlayerController : MonoBehaviour
                     oxygenBar = oxygenBarMax;
                 }
             }
-
         }
+
+        if (oxygenBar <= 30)
+        {
+            _voiceAudioController.PlayOne();
+        }
+        
+        /* ce sera pour orienter le personnage.*/
+        if (move != Vector3.zero)
+            transform.forward = move;
+        
+        _velocity.y += Gravity * Time.deltaTime;
+        _controller.Move(_velocity * Time.deltaTime);
+
+        GazLevel gazLevel = GetCurrentGazLevel();
 
         Debug.Log(oxygenBar);
 
@@ -128,15 +146,9 @@ public class PlayerController : MonoBehaviour
                 if (Hit.collider.tag == "Coal")
                 {
                     particles.Play();
-                    piocheAudioController.PlayOne();
-
-                    GazLevel gazLevel = GetCurrentGazLevel();
+                    _piocheAudioController.PlayOne();
                     gazLevel.IncreaseGazLevel();
-                    if (gazLevel.GazRate > 100)
-                    {
-                        Debug.Log("Boum !");
-                        SceneManager.LoadScene("GameOverScene");
-                    }
+                    
                     Debug.Log("coal hitted : " + Hit.point);
                     Hit.collider.gameObject.GetComponent<CoalBlock>().MineBlock();
                 }
@@ -154,6 +166,25 @@ public class PlayerController : MonoBehaviour
         {
             spriteLooker.LookCamera();
         }
+
+        if (gazLevel)
+        {
+            if (gazLevel.GazRate > 100)
+            {
+                Debug.Log("Boum !");
+                SceneManager.LoadScene("GameOverScene");
+            }
+
+            if (gazLevel.GazRate >= 80)
+            {
+                _piouAudioController.PlayHighPanicked();
+            }
+            else if (gazLevel.GazRate >= 60)
+            {
+                _piouAudioController.PlayLowPanicked();
+            }
+        }
+
         //Debug.Log("Oxygen = " + oxygenBar);
     }
 

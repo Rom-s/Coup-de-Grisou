@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 8736920844652787444}
   - component: {fileID: 3355819866492667654}
   m_Layer: 0
-  m_Name: Mouth Audio Source
+  m_Name: Voice Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5570,9 +5570,7 @@ MonoBehaviour:
   oxygenLoss: 11
   oxygenGain: 5
   particles: {fileID: 218934161}
-  footStepAudioController: {fileID: 4370985691205860770}
-  piocheAudioController: {fileID: 2108481310175636741}
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 2989583556510933412}
 --- !u!1 &9194722414244053334
 GameObject:
   m_ObjectHideFlags: 0
