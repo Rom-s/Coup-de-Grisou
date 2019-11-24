@@ -29,4 +29,9 @@ public class CoalBlock : MonoBehaviour
         BlockLife -= 1;
         Debug.Log("Block life = " + BlockLife);
     }
+
+    public float GetBlocLife()
+    {
+        return BlockLife;
+    }
 }
