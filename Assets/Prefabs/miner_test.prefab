@@ -4953,6 +4953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   suffoquementSounds:
   - {fileID: 8300000, guid: 8b2767689f77dc84db3318801f25e345, type: 3}
+  - {fileID: 8300000, guid: cd4faf5ae3e941b498dde8f4a1fde3df, type: 3}
 --- !u!1 &3088148300358411642
 GameObject:
   m_ObjectHideFlags: 0
@@ -4963,6 +4964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9105852751849892227}
   - component: {fileID: 5429492910287224365}
+  - component: {fileID: 1014142319766738282}
   m_Layer: 0
   m_Name: Piou Audio Source
   m_TagString: Untagged
@@ -5559,15 +5561,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minerSprite: {fileID: 9194722414244053328}
-  oxygenTextBar: {fileID: 0}
   spriteLooker: {fileID: 9194722414244053331}
   Speed: 4
+  _miningDistance: 1.5
+  oxygenChange: 0
   oxygenBarMax: 100
   oxygenLoss: 15
   oxygenGain: 5
   particles: {fileID: 218934161}
   footStepAudioController: {fileID: 4370985691205860770}
   piocheAudioController: {fileID: 2108481310175636741}
+  playerAnimator: {fileID: 0}
 --- !u!1 &9194722414244053334
 GameObject:
   m_ObjectHideFlags: 0
